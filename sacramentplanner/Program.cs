@@ -1,8 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using sacramentplanner.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<SacramentPlannerContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("SacramentPlannerContext") ?? throw new InvalidOperationException("Connection string 'SacramentPlannerContext' not found.")));
 
 var app = builder.Build();
 
