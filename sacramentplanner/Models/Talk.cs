@@ -6,5 +6,6 @@ namespace sacramentplanner.Models
         public int SacramentPlanId { get; set; }
         public string Speaker { get; set; }
         public string Topic { get; set; }
+        public SacramentPlan SacramentPlan { get; set; }
     }  
 }
