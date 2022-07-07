@@ -48,6 +48,35 @@ namespace sacramentplanner.Controllers
 
             return talk;
         }
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutTalsk(int id, Talk talk)
+        {
+            if (id != talk.TalkId)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(talk).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!TalkExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
 
         // POST: api/Talk
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -64,6 +93,11 @@ namespace sacramentplanner.Controllers
             return CreatedAtAction("GetTalk", new { id = talk.TalkId }, talk);
         }
         private bool TalkExists(int id)
+        {
+            return (_context.Talks?.Any(e => e.TalkId == id)).GetValueOrDefault();
+        }
+
+         private bool TalkExits(int id)
         {
             return (_context.Talks?.Any(e => e.TalkId == id)).GetValueOrDefault();
         }
