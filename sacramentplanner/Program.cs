@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using sacramentplanner.Data;
 using sacramentplanner.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,13 @@ builder.Services.AddDbContext<SacramentPlannerContext>(options =>
 
 var app = builder.Build();
 
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+
+  DbInitializer.Initialize(services);
+}
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
