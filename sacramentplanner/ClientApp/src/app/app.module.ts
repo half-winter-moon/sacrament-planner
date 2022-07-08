@@ -14,6 +14,7 @@ import { SacramentEditComponent } from './sacrament/sacrament-edit/sacrament-edi
 import { SacramentListComponent } from './sacrament/sacrament-list/sacrament-list.component';
 import { SacramentDetailsComponent } from './sacrament/sacrament-details/sacrament-details.component';
 import { AppRoutingModule } from './app-routing.module';
+import { SacramentItemComponent } from './sacrament/sacrament-item/sacrament-item.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { AppRoutingModule } from './app-routing.module';
     SacramentEditComponent,
     SacramentListComponent,
     SacramentDetailsComponent,
+    SacramentItemComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
