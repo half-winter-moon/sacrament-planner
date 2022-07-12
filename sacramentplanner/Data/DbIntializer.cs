@@ -55,6 +55,47 @@ namespace sacramentplanner.Data
             }
             context.SaveChanges();
 
+            var sacramentPlan = new SacramentPlan[]
+            {
+                new SacramentPlan { 
+                SacramentDate=DateTime.Now, 
+                Presiding="John Doe",
+                Conducting="Lakeram Narine",
+                OpeningHymn="2", 
+                Invocation="Jane Smith", 
+                SacramentHymn="301", 
+                IsFastSunday=false, 
+                ClosingHymn="304", 
+                Benediction="Jacob Smith" }  ,
+
+                new SacramentPlan { 
+                SacramentDate=DateTime.Now, 
+                Presiding="Jim Doe",
+                Conducting="Kevin Castro",
+                OpeningHymn="2", 
+                Invocation="Jill Smith", 
+                SacramentHymn="303", 
+                IsFastSunday=false, 
+                ClosingHymn="239", 
+                Benediction="Jonathon Smith" },
+
+                new SacramentPlan { 
+                SacramentDate=DateTime.Now, 
+                Presiding="William Taylor",
+                Conducting="Samuel Smith",
+                OpeningHymn="2", 
+                Invocation="Jennie Handy", 
+                SacramentHymn="303", 
+                IsFastSunday=false, 
+                ClosingHymn="239", 
+                Benediction="Tim Thayne" }
+               
+            };
+            foreach (SacramentPlan s in sacramentPlan)
+            {
+                context.SacramentPlans.Add(s);
+            }
+
             var hymns = new Hymn[]
             {
                 new Hymn {HymnName="The Spirit of God", HymnNumber= "2"},

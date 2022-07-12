@@ -13,15 +13,17 @@ export class SacramentService {
 
   constructor(private http: HttpClient) {}
 
-  sortAndSend() {
-    this.sacraments.sort((a, b) =>
-      a.name > b.name ? 1 : b.name > a.name ? -1 : 0
-    );
-    this.sacramentListChangedEvent.next(this.sacraments.slice());
-  }
+  // sortAndSend() {
+  //   this.sacraments.sort((a, b) =>
+  //     a.name > b.name ? 1 : b.name > a.name ? -1 : 0
+  //   );
+  //   this.sacramentListChangedEvent.next(this.sacraments.slice());
+  // }
 
-  getSacrament(id: string): Sacrament {
-    return this.sacraments.find((sacrament) => sacrament.id === id);
+  getSacrament(id: string) {
+    return this.sacraments.find(
+      (sacrament) => sacrament.SacramentPlanId === id
+    );
   }
 
   getSacraments() {
@@ -33,9 +35,9 @@ export class SacramentService {
         (sacramentData) => {
           this.sacraments = sacramentData.sacraments;
           // this.maxSacramentId = this.getMaxId();
-          this.sacraments.sort((a, b) =>
-            a.name > b.name ? 1 : a.name < b.name ? -1 : 0
-          );
+          // this.sacraments.sort((a, b) =>
+          //   a.name > b.name ? 1 : a.name < b.name ? -1 : 0
+          // );
           this.sacramentListChangedEvent.next(this.sacraments.slice());
         },
         (error) => {
@@ -49,7 +51,9 @@ export class SacramentService {
       return;
     }
 
-    const pos = this.sacraments.findIndex((d) => d.id === sacrament.id);
+    const pos = this.sacraments.findIndex(
+      (d) => d.SacramentPlanId === sacrament.SacramentPlanId
+    );
 
     if (pos < 0) {
       return;
@@ -57,10 +61,10 @@ export class SacramentService {
 
     // delete from database
     this.http
-      .delete('http://localhost:3000/sacraments/' + sacrament.id)
+      .delete('http://localhost:3000/sacraments/' + sacrament.SacramentPlanId)
       .subscribe((response: Response) => {
         this.sacraments.splice(pos, 1);
-        this.sortAndSend();
+        // this.sortAndSend();
       });
   }
 
@@ -70,7 +74,7 @@ export class SacramentService {
     }
 
     // make sure id of the new Sacrament is empty
-    sacrament.id = '';
+    sacrament.SacramentPlanId = '';
 
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
@@ -84,7 +88,7 @@ export class SacramentService {
       .subscribe((responseData) => {
         // add new sacrament to sacraments
         this.sacraments.push(responseData.sacrament);
-        this.sortAndSend();
+        // this.sortAndSend();
       });
   }
 
@@ -92,14 +96,16 @@ export class SacramentService {
     if (!originalSacrament || !newSacrament) {
       return;
     }
-    const pos = this.sacraments.findIndex((d) => d.id === originalSacrament.id);
+    const pos = this.sacraments.findIndex(
+      (d) => d.SacramentPlanId === originalSacrament.SacramentPlanId
+    );
 
     if (pos < 0) {
       return;
     }
 
     // set the id of the new Sacrament to the id of the old Sacrament
-    newSacrament.id = originalSacrament.id;
+    newSacrament.SacramentPlanId = originalSacrament.SacramentPlanId;
     // newSacrament._id = originalSacrament._id; WHERE IS THIS??
 
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -107,13 +113,13 @@ export class SacramentService {
     // update database
     this.http
       .put(
-        'http://localhost:3000/sacraments/' + originalSacrament.id,
+        'http://localhost:3000/sacraments/' + originalSacrament.SacramentPlanId,
         newSacrament,
         { headers: headers }
       )
       .subscribe((response: Response) => {
         this.sacraments[pos] = newSacrament;
-        this.sortAndSend();
+        // this.sortAndSend();
       });
   }
 }

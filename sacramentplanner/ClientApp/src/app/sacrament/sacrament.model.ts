@@ -1,6 +1,6 @@
 export class Sacrament {
   constructor(
-    public SacramentPlanId: number,
+    public SacramentPlanId: string,
     public SacramentDate: Date,
     public Presiding: string,
     public Conducting: string,

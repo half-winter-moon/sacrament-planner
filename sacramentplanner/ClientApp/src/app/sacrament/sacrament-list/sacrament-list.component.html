@@ -1,2 +1,16 @@
-<p>sacrament-list works!</p>
-<app-sacrament-item></app-sacrament-item>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="row pad-left-right">
+      <span class="pull-left title">Sacrament Plans</span>
+      <a class="btn btn-success pull-right" routerLink="new">Add Plan</a>
+    </div>
+  </div>
+  <div class="panel-body">
+    <div class="center-panel">
+      <app-sacrament-item
+        *ngFor="let sacrament of sacraments"
+        [sacrament]="sacrament"
+      ></app-sacrament-item>
+    </div>
+  </div>
+</div>
