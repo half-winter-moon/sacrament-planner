@@ -1,15 +1,15 @@
 export class Sacrament {
   constructor(
-    public SacramentPlanId: string,
-    public SacramentDate: Date,
-    public Presiding: string,
-    public Conducting: string,
-    public OpeningHymn: string,
-    public Invocation: string,
-    public SacramentHymn: string,
+    public sacramentPlanId: number,
+    public sacramentDate: Date,
+    public presiding: string,
+    public conducting: string,
+    public openingHymn: string,
+    public invocation: string,
+    public sacramentHymn: string,
     public talks: [],
-    public IsFastSunday: boolean,
-    public ClosingHymn: string,
-    public Benediction: string
+    public isFastSunday: boolean,
+    public closingHymn: string,
+    public benediction: string
   ) {}
 }

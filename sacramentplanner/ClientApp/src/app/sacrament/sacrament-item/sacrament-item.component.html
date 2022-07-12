@@ -1,1 +1,17 @@
-<p>sacrament-item works!</p>
+<a
+  class="list-group-item clearfix documentDiv"
+  routerLinkActive="active"
+  [routerLink]="[sacrament.sacramentPlanId]"
+>
+  {{ sacrament?.sacramentPlanId }}
+</a>
+<!-- <a
+  routerLinkActive="active"
+  routerLink="{{ sacrament.sacramentPlanId }}"
+  class="list-group-item clearfix documentDiv"
+>
+  {{ sacrament.sacramentDate }}
+   <div class="pull-left">
+    <h4 class="list-group-item-heading"></h4>
+  </div> 
+</a> -->

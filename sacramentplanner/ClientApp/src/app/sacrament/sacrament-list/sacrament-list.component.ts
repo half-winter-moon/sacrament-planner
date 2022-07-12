@@ -19,6 +19,7 @@ export class SacramentListComponent implements OnInit {
     this.sacramentService.sacramentListChangedEvent.subscribe(
       (sacraments: Sacrament[]) => {
         this.sacraments = sacraments;
+        // console.log(this.sacraments);
       }
     );
   }

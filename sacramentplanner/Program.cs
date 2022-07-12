@@ -12,6 +12,10 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<SacramentPlannerContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("SacramentPlannerContext") ?? throw new InvalidOperationException("Connection string 'SacramentPlannerContext' not found.")));
+builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
+    {
+        builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+    }));
 
 var app = builder.Build();
 
@@ -32,6 +36,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+app.UseCors("corsapp");
 
 
 app.MapControllerRoute(
