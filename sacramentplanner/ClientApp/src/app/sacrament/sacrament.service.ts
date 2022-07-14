@@ -20,14 +20,14 @@ export class SacramentService {
   //   this.sacramentListChangedEvent.next(this.sacraments.slice());
   // }
 
-  getSacrament(id: number) {
+  getSacrament(id: number): Sacrament {
     // console.log(this.sacraments);
     // return this.sacraments.find(
     //   (sacrament) => sacrament.sacramentPlanId === id
     // );
-    for (let doc of this.sacraments) {
-      if (doc.sacramentPlanId == id) {
-        return doc;
+    for (let s of this.sacraments) {
+      if (s.sacramentPlanId == id) {
+        return s;
       }
     }
 
@@ -52,27 +52,27 @@ export class SacramentService {
       );
   }
 
-  // deleteSacrament(sacrament: Sacrament) {
-  //   if (!sacrament) {
-  //     return;
-  //   }
+  deleteSacrament(sacrament: Sacrament) {
+    if (!sacrament) {
+      return;
+    }
 
-  //   const pos = this.sacraments.findIndex(
-  //     (d) => d.SacramentPlanId === sacrament.SacramentPlanId
-  //   );
+    const pos = this.sacraments.findIndex(
+      (d) => d.sacramentPlanId === sacrament.sacramentPlanId
+    );
 
-  //   if (pos < 0) {
-  //     return;
-  //   }
+    if (pos < 0) {
+      return;
+    }
 
-  //   // delete from database
-  //   this.http
-  //     .delete('http://localhost:3000/sacraments/' + sacrament.SacramentPlanId)
-  //     .subscribe((response: Response) => {
-  //       this.sacraments.splice(pos, 1);
-  //       // this.sortAndSend();
-  //     });
-  // }
+    // delete from database
+    this.http
+      .delete('http://localhost:3000/sacraments/' + sacrament.sacramentPlanId)
+      .subscribe((response: Response) => {
+        this.sacraments.splice(pos, 1);
+        // this.sortAndSend();
+      });
+  }
 
   // addSacrament(sacrament: Sacrament) {
   //   if (!sacrament) {

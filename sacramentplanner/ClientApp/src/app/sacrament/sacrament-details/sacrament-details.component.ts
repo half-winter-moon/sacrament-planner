@@ -10,7 +10,7 @@ import { WindRefService } from 'src/app/wind-ref.service';
   styleUrls: ['./sacrament-details.component.css'],
 })
 export class SacramentDetailsComponent implements OnInit {
-  sacrament: Sacrament;
+  sacramentDetail: Sacrament;
   id: number = 1;
   nativeWindow: any;
 
@@ -25,17 +25,17 @@ export class SacramentDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
-      this.id = params['id'];
+      this.id = +params['id'];
       // if (this.id == null) {
       //   this.id = 1;
       // }
-      this.sacramentService.getSacrament(this.id);
+      this.sacramentDetail = this.sacramentService.getSacrament(this.id);
       console.log(this.id);
     });
   }
 
-  // onDelete() {
-  //   this.sacramentService.deleteSacrament(this.sacrament);
-  //   this.router.navigate(['/documents'], { relativeTo: this.route });
-  // }
+  onDelete() {
+    this.sacramentService.deleteSacrament(this.sacramentDetail);
+    this.router.navigate(['/documents'], { relativeTo: this.route });
+  }
 }

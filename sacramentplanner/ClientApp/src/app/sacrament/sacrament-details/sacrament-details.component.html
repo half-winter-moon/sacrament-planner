@@ -1,24 +1,92 @@
 <div class="panel panel-default" xmlns="http://www.w3.org/1999/html">
   <div class="panel-heading">
-    <div class="row pad-all">
-      <h4 class="title margin-left-right">{{ sacrament?.sacramentDate }}</h4>
-      <div class="row pull-right margin-left-right btn-toolbar">
-        <a class="btn btn-info" routerLink="edit">Edit</a>
-        <!-- <a class="btn btn-danger" (click)="onDelete()">Delete</a> -->
-      </div>
-    </div>
+    <h3 class="panel-title">Lake Fork Ward</h3>
+    <p class="title margin-left-right">
+      {{ sacramentDetail?.sacramentDate }}
+    </p>
   </div>
   <div class="panel-body">
     <div class="pad-left-right">
       <div class="row">
-        <label>Presiding</label>
-        <span class="label-value">{{ sacrament?.presiding }}</span>
+        <label
+          >Presiding:
+          <span class="label-value">{{
+            sacramentDetail?.presiding
+          }}</span></label
+        >
       </div>
-      <!-- <br />
+      <br />
       <div class="row">
-        <label>URL:</label>
-        <span class="label-value">{{ document?.url }}</span>
-      </div> -->
+        <label
+          >Conducting:
+          <span class="label-value">{{
+            sacramentDetail?.conducting
+          }}</span></label
+        >
+      </div>
+      <br />
+      <div class="row">
+        <label
+          >Opening Hymn:
+          <span class="label-value"
+            >Page {{ sacramentDetail?.openingHymnNumber }}</span
+          ></label
+        >
+        <span>{{ sacramentDetail?.openingHymnName }}</span>
+      </div>
+      <br />
+      <div class="row">
+        <label
+          >Invocation:
+          <span class="label-value">{{
+            sacramentDetail?.invocation
+          }}</span></label
+        >
+      </div>
+      <br />
+      <div class="row">
+        <label
+          >Sacrament Hymn:
+          <span class="label-value">{{
+            sacramentDetail?.sacramentHymnNumber
+          }}</span></label
+        >
+        <span>{{ sacramentDetail?.sacramentHymnName }}</span>
+      </div>
+      <br />
+      <span>Passing of the sacrament by the Aaronic Priesthood</span>
+      <br />
+      <br />
+      <div class="row" *ngFor="let talk of sacramentDetail.talks">
+        <label
+          >Speaker: <span class="label-value">{{ talk }}</span></label
+        >
+      </div>
+      <br />
+      <div class="row">
+        <label
+          >Closing Hymn:
+          <span class="label-value">{{
+            sacramentDetail?.closingHymnNumber
+          }}</span></label
+        >
+        <span>{{ sacramentDetail?.closingHymnName }}</span>
+      </div>
+      <br />
+      <div class="row">
+        <label
+          >Benediction:
+          <span class="label-value">{{
+            sacramentDetail?.benediction
+          }}</span></label
+        >
+      </div>
+    </div>
+  </div>
+  <div class="row pad-all">
+    <div class="row pull-right margin-left-right btn-toolbar">
+      <a class="btn btn-info" routerLink="edit">Edit</a>
+      <a class="btn btn-danger" (click)="onDelete()">Delete</a>
     </div>
   </div>
 </div>

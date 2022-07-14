@@ -7,12 +7,15 @@ namespace sacramentplanner.Models
         public DateTime SacramentDate { get; set; }
         public string Presiding { get; set; }
         public string Conducting { get; set; }
-        public string OpeningHymn { get; set; }
+        public string OpeningHymnName { get; set; }
+        public int OpeningHymnNumber { get; set; }
         public string Invocation { get; set; }
-        public string SacramentHymn { get; set; }
+        public string SacramentHymnName { get; set; }
+        public int SacramentHymnNumber { get; set; }
         public ICollection<Talk> ?Talks { get; set; }
         public Boolean IsFastSunday { get; set; }
-        public string ClosingHymn { get; set; }
+        public string ClosingHymnName { get; set; }
+        public int ClosingHymnNumber { get; set; }
         public string Benediction { get; set; }
     }
 }

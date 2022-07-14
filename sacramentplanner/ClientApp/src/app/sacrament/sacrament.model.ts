@@ -4,12 +4,15 @@ export class Sacrament {
     public sacramentDate: Date,
     public presiding: string,
     public conducting: string,
-    public openingHymn: string,
+    public openingHymnNumber: number,
+    public openingHymnName: string,
     public invocation: string,
-    public sacramentHymn: string,
+    public sacramentHymnName: string,
+    public sacramentHymnNumber: number,
     public talks: [],
     public isFastSunday: boolean,
-    public closingHymn: string,
+    public closingHymnName: string,
+    public closingHymnNumber: number,
     public benediction: string
   ) {}
 }

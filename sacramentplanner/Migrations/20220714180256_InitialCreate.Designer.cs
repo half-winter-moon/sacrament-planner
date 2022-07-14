@@ -11,7 +11,7 @@ using sacramentplanner.Models;
 namespace sacramentplanner.Migrations
 {
     [DbContext(typeof(SacramentPlannerContext))]
-    [Migration("20220712150934_InitialCreate")]
+    [Migration("20220714180256_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -92,9 +92,12 @@ namespace sacramentplanner.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("ClosingHymn")
+                    b.Property<string>("ClosingHymnName")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("ClosingHymnNumber")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Conducting")
                         .IsRequired()
@@ -107,9 +110,12 @@ namespace sacramentplanner.Migrations
                     b.Property<bool>("IsFastSunday")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("OpeningHymn")
+                    b.Property<string>("OpeningHymnName")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("OpeningHymnNumber")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Presiding")
                         .IsRequired()
@@ -118,9 +124,12 @@ namespace sacramentplanner.Migrations
                     b.Property<DateTime>("SacramentDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("SacramentHymn")
+                    b.Property<string>("SacramentHymnName")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("SacramentHymnNumber")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("SacramentPlanId");
 

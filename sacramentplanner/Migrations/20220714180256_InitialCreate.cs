@@ -62,11 +62,14 @@ namespace sacramentplanner.Migrations
                     SacramentDate = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Presiding = table.Column<string>(type: "TEXT", nullable: false),
                     Conducting = table.Column<string>(type: "TEXT", nullable: false),
-                    OpeningHymn = table.Column<string>(type: "TEXT", nullable: false),
+                    OpeningHymnName = table.Column<string>(type: "TEXT", nullable: false),
+                    OpeningHymnNumber = table.Column<int>(type: "INTEGER", nullable: false),
                     Invocation = table.Column<string>(type: "TEXT", nullable: false),
-                    SacramentHymn = table.Column<string>(type: "TEXT", nullable: false),
+                    SacramentHymnName = table.Column<string>(type: "TEXT", nullable: false),
+                    SacramentHymnNumber = table.Column<int>(type: "INTEGER", nullable: false),
                     IsFastSunday = table.Column<bool>(type: "INTEGER", nullable: false),
-                    ClosingHymn = table.Column<string>(type: "TEXT", nullable: false),
+                    ClosingHymnName = table.Column<string>(type: "TEXT", nullable: false),
+                    ClosingHymnNumber = table.Column<int>(type: "INTEGER", nullable: false),
                     Benediction = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
