@@ -1,1 +1,190 @@
-<p>sacrament-edit works!</p>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <form id="sacrament-edit" #f="ngForm" (ngSubmit)="onSubmit(f)">
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <label for="presiding">Presiding:</label>
+          <input
+            type="text"
+            id="presiding"
+            class="form-control"
+            size="120"
+            max="120"
+            name="presiding"
+            [ngModel]="sacrament?.presiding"
+            required
+            #presiding="ngModel"
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <label for="conducting">Conducting:</label>
+          <input
+            type="text"
+            id="conducting"
+            class="form-control"
+            size="120"
+            max="255"
+            name="conducting"
+            [ngModel]="sacrament?.conducting"
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <label for="openingHymnNumber">Opening Hymn Number:</label>
+          <input
+            type="text"
+            id="openingHymnNumber"
+            class="form-control"
+            size="150"
+            max="255"
+            name="openingHymnNumber"
+            [ngModel]="sacrament?.openingHymnNumber"
+            required
+            #url="ngModel"
+          />
+          <!-- <div class="alert alert-danger" *ngIf="!f.valid">
+            The Document Title and Document URL are required fields.
+          </div> -->
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <label for="openingHymnName">Opening Hymn Name:</label>
+          <input
+            type="text"
+            id="openingHymnName"
+            class="form-control"
+            size="150"
+            max="255"
+            name="openingHymnName"
+            [ngModel]="sacrament?.openingHymnName"
+            required
+            #url="ngModel"
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <label for="invocation">Invocation:</label>
+          <input
+            type="text"
+            id="invocation"
+            class="form-control"
+            size="120"
+            max="255"
+            name="invocation"
+            [ngModel]="sacrament?.invocation"
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <label for="sacramentHymnNumber">Sacrament Hymn Number:</label>
+          <input
+            type="text"
+            id="sacramentHymnNumber"
+            class="form-control"
+            size="120"
+            max="255"
+            name="sacramentHymnNumber"
+            [ngModel]="sacrament?.sacramentHymnNumber"
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <label for="sacramentHymnName">Sacrament Hymn Name:</label>
+          <input
+            type="text"
+            id="sacramentHymnName"
+            class="form-control"
+            size="120"
+            max="255"
+            name="sacramentHymnName"
+            [ngModel]="sacrament?.sacramentHymnName"
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <label for="talk">Talk:</label>
+          <!-- <input
+            type="text"
+            id="talk"
+            class="form-control"
+            size="120"
+            max="255"
+            name="talk"
+            [ngModel]="sacramentDetail?.conducting"
+          /> -->
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <label for="closingHymnNumber">Closing Hymn Number:</label>
+          <input
+            type="text"
+            id="closingHymnNumber"
+            class="form-control"
+            size="120"
+            max="255"
+            name="closingHymnNumber"
+            [ngModel]="sacrament?.closingHymnNumber"
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <label for="closingHymnName">Closing Hymn Name:</label>
+          <input
+            type="text"
+            id="closingHymnName"
+            class="form-control"
+            size="120"
+            max="255"
+            name="closingHymnNumber"
+            [ngModel]="sacrament?.closingHymnName"
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <label for="benediction">Benediction:</label>
+          <input
+            type="text"
+            id="benediction"
+            class="form-control"
+            size="120"
+            max="255"
+            name="benediction"
+            [ngModel]="sacrament?.benediction"
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 btn-toolbar">
+          <button class="btn btn-success" type="submit" *ngIf="f.valid">
+            Save
+          </button>
+          <button class="btn btn-primary" type="button" (click)="onCancel()">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
