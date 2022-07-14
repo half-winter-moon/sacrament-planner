@@ -115,18 +115,33 @@
         </div>
       </div>
 
-      <div class="row">
+      <div class="row" *ngFor="let talk of talks | keyvalue; let i = index">
         <div class="col-sm-12 form-group">
-          <label for="talk">Talk:</label>
-          <!-- <input
+          <label for="speaker">Speaker:</label>
+
+          <!-- we need to have a better  way to iterate through the speakers and topics in the edit page-->
+
+          <input
             type="text"
-            id="talk"
+            id="speaker"
             class="form-control"
             size="120"
             max="255"
-            name="talk"
-            [ngModel]="sacramentDetail?.conducting"
-          /> -->
+            name="{{ i + 1 }}"
+            [ngModel]="talk.value['speaker']"
+          />
+        </div>
+        <div class="col-sm-12 form-group">
+          <label for="topic">Topic:</label>
+          <input
+            type="text"
+            id="topic"
+            class="form-control"
+            size="120"
+            max="255"
+            name="{{ i + 0.5 }}"
+            [ngModel]="talk.value['topic']"
+          />
         </div>
       </div>
 

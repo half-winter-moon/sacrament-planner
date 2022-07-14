@@ -13,6 +13,7 @@ export class SacramentEditComponent implements OnInit {
   originalSacrament: Sacrament;
   sacrament: Sacrament;
   editMode: boolean = false;
+  talks: any;
 
   constructor(
     private sacramentService: SacramentService,
@@ -38,6 +39,11 @@ export class SacramentEditComponent implements OnInit {
       }
       this.editMode = true;
       this.sacrament = JSON.parse(JSON.stringify(this.originalSacrament));
+      for (const prop in this.sacrament) {
+        if (prop === 'talks') {
+          this.talks = this.sacrament[prop];
+        }
+      }
     });
   }
 
@@ -68,10 +74,10 @@ export class SacramentEditComponent implements OnInit {
       console.log(newSacrament);
       this.sacramentService.addSacrament(newSacrament);
     }
-    this.router.navigate(['/sacraments']);
+    this.router.navigate(['/sacrament']);
   }
 
   onCancel() {
-    this.router.navigate(['/sacraments']);
+    this.router.navigate(['/sacrament']);
   }
 }

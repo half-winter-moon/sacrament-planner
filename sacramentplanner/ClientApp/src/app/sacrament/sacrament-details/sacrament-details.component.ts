@@ -36,12 +36,12 @@ export class SacramentDetailsComponent implements OnInit {
           this.talks = this.sacramentDetail[prop];
         }
       }
-      console.log(this.talks);
+      // console.log(this.talks);
     });
   }
 
   onDelete() {
     this.sacramentService.deleteSacrament(this.sacramentDetail);
-    this.router.navigate(['/documents'], { relativeTo: this.route });
+    this.router.navigate(['/sacrament'], { relativeTo: this.route });
   }
 }
