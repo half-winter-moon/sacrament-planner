@@ -57,10 +57,16 @@
       <span>Passing of the sacrament by the Aaronic Priesthood</span>
       <br />
       <br />
-      <div class="row" *ngFor="let talk of sacramentDetail.talks">
-        <label
-          >Speaker: <span class="label-value">{{ talk }}</span></label
-        >
+      <div class="row" *ngFor="let talk of talks | keyvalue">
+        <label>
+          Speaker:
+          <span class="label-value">{{ talk.value["speaker"] }}</span>
+        </label>
+        <label>
+          Topic:
+          <span class="label-value">{{ talk.value["topic"] }}</span>
+        </label>
+        <br />
       </div>
       <br />
       <div class="row">

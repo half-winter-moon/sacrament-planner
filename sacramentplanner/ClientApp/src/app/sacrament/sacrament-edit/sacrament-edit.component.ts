@@ -44,19 +44,19 @@ export class SacramentEditComponent implements OnInit {
   onSubmit(form: NgForm) {
     const value = form.value;
     const newSacrament = new Sacrament(
-      value.sacramentPlanId,
+      0,
       value.sacramentDate,
       value.presiding,
       value.conducting,
-      value.openingHymnNumber,
+      +value.openingHymnNumber,
       value.openingHymnName,
       value.invocation,
       value.sacramentHymnName,
-      value.sacramentHymnNumber,
+      +value.sacramentHymnNumber,
       value.talks,
       value.isFastSunday,
       value.closingHymnName,
-      value.closingHymnNumber,
+      +value.closingHymnNumber,
       value.benediction
     );
     if (this.editMode) {
@@ -65,6 +65,7 @@ export class SacramentEditComponent implements OnInit {
         newSacrament
       );
     } else {
+      console.log(newSacrament);
       this.sacramentService.addSacrament(newSacrament);
     }
     this.router.navigate(['/sacraments']);

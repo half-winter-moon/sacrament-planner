@@ -67,8 +67,9 @@ export class SacramentService {
 
     // delete from database
     this.http
-      //https://localhost:7095/api/sacrament
-      .delete('http://localhost:3000/sacraments/' + sacrament.sacramentPlanId)
+      .delete(
+        'https://localhost:7095/api/sacrament/' + sacrament.sacramentPlanId
+      )
       .subscribe((response: Response) => {
         this.sacraments.splice(pos, 1);
         // this.sortAndSend();
@@ -81,21 +82,19 @@ export class SacramentService {
     }
 
     // make sure id of the new Sacrament is empty
-    sacrament.sacramentPlanId = null;
+    sacrament.sacramentPlanId = 0;
 
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
     // add to database
     this.http
-      .post<{ message: string; sacrament: Sacrament }>(
-        //https://localhost:7095/api/sacrament
-        'http://localhost:3000/sacraments',
-        sacrament,
-        { headers: headers }
-      )
+      .post('https://localhost:7095/api/sacrament', sacrament, {
+        headers: headers,
+      })
       .subscribe((responseData) => {
         // add new sacrament to sacraments
-        this.sacraments.push(responseData.sacrament);
+        this.sacraments.push();
+        //responseData.sacrament
         // this.sortAndSend();
       });
   }
@@ -121,7 +120,8 @@ export class SacramentService {
     // update database
     this.http
       .put(
-        'http://localhost:3000/sacraments/' + originalSacrament.sacramentPlanId,
+        'https://localhost:7095/api/sacrament/' +
+          originalSacrament.sacramentPlanId,
         newSacrament,
         { headers: headers }
       )

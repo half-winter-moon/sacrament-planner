@@ -13,6 +13,7 @@ export class SacramentDetailsComponent implements OnInit {
   sacramentDetail: Sacrament;
   id: number = 1;
   nativeWindow: any;
+  talks: any;
 
   constructor(
     private sacramentService: SacramentService,
@@ -30,7 +31,12 @@ export class SacramentDetailsComponent implements OnInit {
       //   this.id = 1;
       // }
       this.sacramentDetail = this.sacramentService.getSacrament(this.id);
-      console.log(this.id);
+      for (const prop in this.sacramentDetail) {
+        if (prop === 'talks') {
+          this.talks = this.sacramentDetail[prop];
+        }
+      }
+      console.log(this.talks);
     });
   }
 

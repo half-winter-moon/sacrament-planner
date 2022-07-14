@@ -28,7 +28,9 @@ namespace sacramentplanner.Controllers
           {
               return NotFound();
           }
-            return await _context.SacramentPlans.ToListAsync();
+            return await _context.SacramentPlans
+                .Include(t => t.Talks)
+                .ToListAsync();
         }
 
         // GET: api/Sacrament/5
@@ -39,7 +41,9 @@ namespace sacramentplanner.Controllers
           {
               return NotFound();
           }
-            var sacramentPlan = await _context.SacramentPlans.FindAsync(id);
+            var sacramentPlan = await _context.SacramentPlans
+                .Include(t => t.Talks)
+                .FirstOrDefaultAsync(s => s.SacramentPlanId == id);
 
             if (sacramentPlan == null)
             {

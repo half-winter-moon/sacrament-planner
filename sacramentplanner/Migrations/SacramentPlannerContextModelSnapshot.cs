@@ -105,7 +105,7 @@ namespace sacramentplanner.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("IsFastSunday")
+                    b.Property<bool?>("IsFastSunday")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("OpeningHymnName")
@@ -119,7 +119,7 @@ namespace sacramentplanner.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("SacramentDate")
+                    b.Property<DateTime?>("SacramentDate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("SacramentHymnName")
