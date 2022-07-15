@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Provide sufficient contrast against white background */
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
 a {
   color: #0366d6;
 }
@@ -13,4 +14,69 @@ code {
   color: #fff;
   background-color: #1b6ec2;
   border-color: #1861ac;
+}
+body {
+  margin: auto auto;
+  font-family: "Inter", sans-serif;
+}
+h1.heading {
+  margin-bottom: 20px;
+  margin-top: 50px;
+  text-align: center;
+}
+.sacrament-list {
+  max-width: 60%;
+  margin: auto auto;
+}
+.sacrament-display {
+  margin: auto auto;
+  max-width: 80%;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 20px;
+  background-color: rgb(243, 229, 211);
+  border-radius: 5px;
+  text-align: center;
+}
+.panel-title {
+  text-align: center;
+}
+.sacrament-date {
+  text-align: center;
+}
+.program-body {
+  margin-bottom: 50px;
+}
+.btn {
+  width: 200px;
+  margin: auto auto;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+.edit-btn {
+  background-color: #abbbcd;
+  border-color: #0366d6;
+  color: #000;
+  /* margin-right: -70px; */
+}
+.delete-btn {
+  background-color: #d0377e;
+  border-color: #e01a76;
+  color: #000;
+  /* margin-left: -70px; */
+}
+.add-btn {
+  background-color: rgb(243, 229, 211);
+  border-color: #abbbcd;
+  color: #000;
+}
+.add-btn:hover {
+  background-color: #abbbcd;
+  border-color: #0366d6;
+  color: #000;
+}
+.list-group-item.active {
+  background-color: #abbbcd;
+  border-color: #abbbcd;
+  color: #000;
 }

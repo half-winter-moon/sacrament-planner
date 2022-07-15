@@ -3,7 +3,7 @@
   routerLinkActive="active"
   [routerLink]="[sacrament.sacramentPlanId]"
 >
-  {{ sacrament?.sacramentDate }}
+  Lake Fork Ward Meeting: {{ sacrament?.sacramentDate | date: "MM/dd/yyyy" }}
 </a>
 <!-- <a
   routerLinkActive="active"

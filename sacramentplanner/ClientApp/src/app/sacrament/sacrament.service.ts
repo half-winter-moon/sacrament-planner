@@ -13,12 +13,12 @@ export class SacramentService {
 
   constructor(private http: HttpClient) {}
 
-  // sortAndSend() {
-  //   this.sacraments.sort((a, b) =>
-  //     a.name > b.name ? 1 : b.name > a.name ? -1 : 0
-  //   );
-  //   this.sacramentListChangedEvent.next(this.sacraments.slice());
-  // }
+  sortAndSend() {
+    // this.sacraments.sort((a, b) =>
+    //   a.name > b.name ? 1 : b.name > a.name ? -1 : 0
+    // );
+    this.sacramentListChangedEvent.next(this.sacraments.slice());
+  }
 
   getSacrament(id: number): Sacrament {
     // console.log(this.sacraments);
@@ -72,7 +72,7 @@ export class SacramentService {
       )
       .subscribe((response: Response) => {
         this.sacraments.splice(pos, 1);
-        // this.sortAndSend();
+        this.sortAndSend();
       });
   }
 
@@ -88,14 +88,14 @@ export class SacramentService {
 
     // add to database
     this.http
-      .post('https://localhost:7095/api/sacrament', sacrament, {
+      .post<Sacrament>('https://localhost:7095/api/sacrament', sacrament, {
         headers: headers,
       })
       .subscribe((responseData) => {
         // add new sacrament to sacraments
-        this.sacraments.push();
-        //responseData.sacrament
-        // this.sortAndSend();
+        sacrament.sacramentPlanId = responseData.sacramentPlanId;
+        this.sacraments.push(sacrament);
+        this.sortAndSend();
       });
   }
 
@@ -127,7 +127,7 @@ export class SacramentService {
       )
       .subscribe((response: Response) => {
         this.sacraments[pos] = newSacrament;
-        // this.sortAndSend();
+        this.sortAndSend();
       });
   }
 }

@@ -14,6 +14,7 @@ export class SacramentEditComponent implements OnInit {
   sacrament: Sacrament;
   editMode: boolean = false;
   talks: any;
+  today = new Date();
 
   constructor(
     private sacramentService: SacramentService,

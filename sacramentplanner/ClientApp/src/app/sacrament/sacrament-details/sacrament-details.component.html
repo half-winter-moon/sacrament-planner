@@ -1,15 +1,19 @@
-<div class="panel panel-default" xmlns="http://www.w3.org/1999/html">
+<div
+  class="panel panel-default sacrament-display"
+  xmlns="http://www.w3.org/1999/html"
+>
   <div class="panel-heading">
     <h3 class="panel-title">Lake Fork Ward</h3>
-    <p class="title margin-left-right">
-      {{ sacramentDetail?.sacramentDate }}
+    <p class="title margin-left-right sacrament-date">
+      {{ sacramentDetail?.sacramentDate | date: "MM/dd/yyyy" }}
     </p>
   </div>
-  <div class="panel-body">
+  <div class="panel-body program-body">
     <div class="pad-left-right">
       <div class="row">
         <label
-          >Presiding:
+          >Presiding
+          ............................................................
           <span class="label-value">{{
             sacramentDetail?.presiding
           }}</span></label
@@ -18,7 +22,8 @@
       <br />
       <div class="row">
         <label
-          >Conducting:
+          >Conducting
+          ............................................................
           <span class="label-value">{{
             sacramentDetail?.conducting
           }}</span></label
@@ -27,7 +32,8 @@
       <br />
       <div class="row">
         <label
-          >Opening Hymn:
+          >Opening Hymn
+          ............................................................
           <span class="label-value"
             >Page {{ sacramentDetail?.openingHymnNumber }}</span
           ></label
@@ -37,7 +43,8 @@
       <br />
       <div class="row">
         <label
-          >Invocation:
+          >Invocation
+          ............................................................
           <span class="label-value">{{
             sacramentDetail?.invocation
           }}</span></label
@@ -46,7 +53,8 @@
       <br />
       <div class="row">
         <label
-          >Sacrament Hymn:
+          >Sacrament Hymn
+          ............................................................
           <span class="label-value">{{
             sacramentDetail?.sacramentHymnNumber
           }}</span></label
@@ -59,7 +67,7 @@
       <br />
       <div class="row" *ngFor="let talk of talks | keyvalue">
         <label>
-          Speaker:
+          Speaker ............................................................
           <span class="label-value">{{ talk.value["speaker"] }}</span>
         </label>
         <label>
@@ -71,7 +79,8 @@
       <br />
       <div class="row">
         <label
-          >Closing Hymn:
+          >Closing Hymn
+          ............................................................
           <span class="label-value">{{
             sacramentDetail?.closingHymnNumber
           }}</span></label
@@ -81,7 +90,8 @@
       <br />
       <div class="row">
         <label
-          >Benediction:
+          >Benediction
+          ............................................................
           <span class="label-value">{{
             sacramentDetail?.benediction
           }}</span></label
@@ -91,8 +101,8 @@
   </div>
   <div class="row pad-all">
     <div class="row pull-right margin-left-right btn-toolbar">
-      <a class="btn btn-info" routerLink="edit">Edit</a>
-      <a class="btn btn-danger" (click)="onDelete()">Delete</a>
+      <a class="btn edit-btn" routerLink="edit">Edit</a>
+      <a class="btn delete-btn" (click)="onDelete()">Delete</a>
     </div>
   </div>
 </div>

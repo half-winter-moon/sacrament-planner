@@ -3,6 +3,23 @@
     <form id="sacrament-edit" #f="ngForm" (ngSubmit)="onSubmit(f)">
       <div class="row">
         <div class="col-sm-12 form-group">
+          <label for="sacramentDate">Sacrament Meeting Date:</label>
+          <input
+            type="date"
+            id="sacramentDate"
+            class="form-control"
+            size="120"
+            max="120"
+            name="sacramentDate"
+            [ngModel]="sacrament?.sacramentDate"
+            required
+            #presiding="ngModel"
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 form-group">
           <label for="presiding">Presiding:</label>
           <input
             type="text"
