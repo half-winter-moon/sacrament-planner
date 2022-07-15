@@ -80,3 +80,8 @@ h1.heading {
   border-color: #abbbcd;
   color: #000;
 }
+.form {
+  margin: auto auto;
+  max-width: 60%;
+  margin-bottom: 60px;
+}

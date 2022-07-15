@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, NgForm } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Sacrament } from '../sacrament.model';
 import { SacramentService } from '../sacrament.service';
@@ -13,8 +13,9 @@ export class SacramentEditComponent implements OnInit {
   originalSacrament: Sacrament;
   sacrament: Sacrament;
   editMode: boolean = false;
-  talks: any;
+  talks: any[] = [];
   today = new Date();
+  sacramentForm: FormGroup;
 
   constructor(
     private sacramentService: SacramentService,
@@ -46,37 +47,66 @@ export class SacramentEditComponent implements OnInit {
         }
       }
     });
+    console.log(this.sacrament);
+    this.sacramentForm = new FormGroup({
+      sacramentDate: new FormControl(),
+      presiding: new FormControl(),
+      conducting: new FormControl(),
+      openingHymnNumber: new FormControl(),
+      openingHymnName: new FormControl(),
+      invocation: new FormControl(),
+      sacramentHymnName: new FormControl(),
+      sacramentHymnNumber: new FormControl(),
+      talks: new FormArray([]),
+      // talks: new FormGroup({
+      //   speakers: new FormArray([]),
+      //   topics: new FormArray([]),
+      // }),
+      closingHymnName: new FormControl(),
+      closingHymnNumber: new FormControl(),
+      benediction: new FormControl(),
+    });
   }
 
-  onSubmit(form: NgForm) {
-    const value = form.value;
-    const newSacrament = new Sacrament(
-      0,
-      value.sacramentDate,
-      value.presiding,
-      value.conducting,
-      +value.openingHymnNumber,
-      value.openingHymnName,
-      value.invocation,
-      value.sacramentHymnName,
-      +value.sacramentHymnNumber,
-      value.talks,
-      value.isFastSunday,
-      value.closingHymnName,
-      +value.closingHymnNumber,
-      value.benediction
-    );
-    if (this.editMode) {
-      this.sacramentService.updateSacrament(
-        this.originalSacrament,
-        newSacrament
-      );
-    } else {
-      console.log(newSacrament);
-      this.sacramentService.addSacrament(newSacrament);
-    }
-    this.router.navigate(['/sacrament']);
+  onSubmit() {
+    console.log(this.sacramentForm);
+    this.sacramentForm.reset();
   }
+
+  onAddTalk() {
+    const control = new FormControl(null);
+    (<FormArray>this.sacramentForm.get('talks')).push(control);
+  }
+
+  // onSubmit(form: NgForm) {
+  //   const value = form.value;
+  //   const newSacrament = new Sacrament(
+  //     0,
+  //     value.sacramentDate,
+  //     value.presiding,
+  //     value.conducting,
+  //     +value.openingHymnNumber,
+  //     value.openingHymnName,
+  //     value.invocation,
+  //     value.sacramentHymnName,
+  //     +value.sacramentHymnNumber,
+  //     value.talks,
+  //     value.isFastSunday,
+  //     value.closingHymnName,
+  //     +value.closingHymnNumber,
+  //     value.benediction
+  //   );
+  //   if (this.editMode) {
+  //     this.sacramentService.updateSacrament(
+  //       this.originalSacrament,
+  //       newSacrament
+  //     );
+  //   } else {
+  //     console.log(newSacrament);
+  //     this.sacramentService.addSacrament(newSacrament);
+  //   }
+  //   this.router.navigate(['/sacrament']);
+  // }
 
   onCancel() {
     this.router.navigate(['/sacrament']);

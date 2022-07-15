@@ -9,7 +9,7 @@ export class Sacrament {
     public invocation: string,
     public sacramentHymnName: string,
     public sacramentHymnNumber: number,
-    public talks: [],
+    public talks: any[],
     public isFastSunday: boolean,
     public closingHymnName: string,
     public closingHymnNumber: number,

@@ -1,6 +1,10 @@
 <div class="panel panel-default">
   <div class="panel-body">
-    <form id="sacrament-edit" #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <form
+      id="sacrament-edit"
+      [formGroup]="sacramentForm"
+      (ngSubmit)="onSubmit()"
+    >
       <div class="row">
         <div class="col-sm-12 form-group">
           <label for="sacramentDate">Sacrament Meeting Date:</label>
@@ -8,12 +12,9 @@
             type="date"
             id="sacramentDate"
             class="form-control"
-            size="120"
-            max="120"
-            name="sacramentDate"
-            [ngModel]="sacrament?.sacramentDate"
+            formControlName="sacramentDate"
+            [(ngModel)]="sacrament.sacramentDate"
             required
-            #presiding="ngModel"
           />
         </div>
       </div>
@@ -25,12 +26,8 @@
             type="text"
             id="presiding"
             class="form-control"
-            size="120"
-            max="120"
-            name="presiding"
-            [ngModel]="sacrament?.presiding"
-            required
-            #presiding="ngModel"
+            formControlName="presiding"
+            [(ngModel)]="sacrament.presiding"
           />
         </div>
       </div>
@@ -42,10 +39,8 @@
             type="text"
             id="conducting"
             class="form-control"
-            size="120"
-            max="255"
-            name="conducting"
-            [ngModel]="sacrament?.conducting"
+            formControlName="conducting"
+            [(ngModel)]="sacrament.conducting"
           />
         </div>
       </div>
@@ -57,12 +52,9 @@
             type="text"
             id="openingHymnNumber"
             class="form-control"
-            size="150"
-            max="255"
-            name="openingHymnNumber"
-            [ngModel]="sacrament?.openingHymnNumber"
+            formControlName="openingHymnNumber"
+            [(ngModel)]="sacrament.openingHymnNumber"
             required
-            #url="ngModel"
           />
           <!-- <div class="alert alert-danger" *ngIf="!f.valid">
             The Document Title and Document URL are required fields.
@@ -77,12 +69,9 @@
             type="text"
             id="openingHymnName"
             class="form-control"
-            size="150"
-            max="255"
-            name="openingHymnName"
-            [ngModel]="sacrament?.openingHymnName"
+            formControlName="openingHymnName"
+            [(ngModel)]="sacrament.openingHymnName"
             required
-            #url="ngModel"
           />
         </div>
       </div>
@@ -94,10 +83,8 @@
             type="text"
             id="invocation"
             class="form-control"
-            size="120"
-            max="255"
-            name="invocation"
-            [ngModel]="sacrament?.invocation"
+            formControlName="invocation"
+            [(ngModel)]="sacrament.invocation"
           />
         </div>
       </div>
@@ -109,10 +96,8 @@
             type="text"
             id="sacramentHymnNumber"
             class="form-control"
-            size="120"
-            max="255"
-            name="sacramentHymnNumber"
-            [ngModel]="sacrament?.sacramentHymnNumber"
+            formControlName="sacramentHymnNumber"
+            [(ngModel)]="sacrament.sacramentHymnNumber"
           />
         </div>
       </div>
@@ -124,42 +109,34 @@
             type="text"
             id="sacramentHymnName"
             class="form-control"
-            size="120"
-            max="255"
-            name="sacramentHymnName"
-            [ngModel]="sacrament?.sacramentHymnName"
+            formControlName="sacramentHymnName"
+            [(ngModel)]="sacrament.sacramentHymnName"
           />
         </div>
       </div>
 
-      <div class="row" *ngFor="let talk of talks | keyvalue; let i = index">
-        <div class="col-sm-12 form-group">
-          <label for="speaker">Speaker:</label>
-
-          <!-- we need to have a better  way to iterate through the speakers and topics in the edit page-->
-
-          <input
-            type="text"
-            id="speaker"
-            class="form-control"
-            size="120"
-            max="255"
-            name="{{ i + 1 }}"
-            [ngModel]="talk.value['speaker']"
-          />
+      <div formArrayName="talks">
+        <div *ngIf="editMode">
+          <div *ngFor="let talkControl of talks; let i = index">
+            <input
+              type="text"
+              class="form-control"
+              [formControlName]="i"
+              [(ngModel)]="talks[i]['speaker']"
+            />
+          </div>
         </div>
-        <div class="col-sm-12 form-group">
-          <label for="topic">Topic:</label>
-          <input
-            type="text"
-            id="topic"
-            class="form-control"
-            size="120"
-            max="255"
-            name="{{ i + 0.5 }}"
-            [ngModel]="talk.value['topic']"
-          />
-        </div>
+        <h4>Your Talks</h4>
+        <button class="btn btn-default" type="button" (click)="onAddTalk()">
+          Add Talk
+        </button>
+        <div
+          class="form-group"
+          *ngFor="
+            let talkControl of sacramentForm.get('talks')['controls'];
+            let i = index
+          "
+        ></div>
       </div>
 
       <div class="row">
@@ -169,10 +146,8 @@
             type="text"
             id="closingHymnNumber"
             class="form-control"
-            size="120"
-            max="255"
-            name="closingHymnNumber"
-            [ngModel]="sacrament?.closingHymnNumber"
+            formControlName="closingHymnNumber"
+            [(ngModel)]="sacrament.closingHymnNumber"
           />
         </div>
       </div>
@@ -184,10 +159,8 @@
             type="text"
             id="closingHymnName"
             class="form-control"
-            size="120"
-            max="255"
-            name="closingHymnName"
-            [ngModel]="sacrament?.closingHymnName"
+            formControlName="closingHymnName"
+            [(ngModel)]="sacrament.closingHymnName"
           />
         </div>
       </div>
@@ -199,19 +172,15 @@
             type="text"
             id="benediction"
             class="form-control"
-            size="120"
-            max="255"
-            name="benediction"
-            [ngModel]="sacrament?.benediction"
+            formControlName="benediction"
+            [(ngModel)]="sacrament.benediction"
           />
         </div>
       </div>
 
       <div class="row">
         <div class="col-xs-12 btn-toolbar">
-          <button class="btn btn-success" type="submit" *ngIf="f.valid">
-            Save
-          </button>
+          <button class="btn btn-success" type="submit">Save</button>
           <button class="btn btn-primary" type="button" (click)="onCancel()">
             Cancel
           </button>
