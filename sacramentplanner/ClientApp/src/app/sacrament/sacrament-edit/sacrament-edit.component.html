@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+<div class="panel panel-default sacrament-edit">
   <div class="panel-body">
     <form
       id="sacrament-edit"
@@ -38,7 +38,6 @@
             id="conducting"
             class="form-control"
             formControlName="conducting"
-          
           />
         </div>
       </div>
@@ -51,7 +50,6 @@
             id="openingHymnNumber"
             class="form-control"
             formControlName="openingHymnNumber"
-           
             required
           />
           <!-- <div class="alert alert-danger" *ngIf="!f.valid">
@@ -68,7 +66,6 @@
             id="openingHymnName"
             class="form-control"
             formControlName="openingHymnName"
-          
             required
           />
         </div>
@@ -82,7 +79,6 @@
             id="invocation"
             class="form-control"
             formControlName="invocation"
-           
           />
         </div>
       </div>
@@ -95,7 +91,6 @@
             id="sacramentHymnNumber"
             class="form-control"
             formControlName="sacramentHymnNumber"
-          
           />
         </div>
       </div>
@@ -108,57 +103,25 @@
             id="sacramentHymnName"
             class="form-control"
             formControlName="sacramentHymnName"
-           
           />
         </div>
       </div>
 
-      <!-- <div formArrayName="talks">
-        <div *ngIf="editMode">
-          <div *ngFor="let talkControl of talks; let i = index">
-            <input
-              type="text"
-              class="form-control"
-              [formControlName]="i"
-             
-            />
-          </div>
-        </div>
-        <h4>Your Talks</h4>
-        <button class="btn btn-default" type="button" (click)="onAddTalk()">
-          Add Talk
+      <div formArrayName="talks">
+        <button
+          class="btn btn-default add-talk"
+          type="button"
+          (click)="onAddTalk()"
+        >
+          &#43; Add Talk
         </button>
         <div
           class="form-group"
-          *ngFor="
-            let talkControl of sacramentForm.get('talks')['controls'];
-            let i = index
-          "
-        ></div>
-      </div> -->
-
-
-
-      <div formArrayName="talks">
-        <h4>Talks</h4>
-        <button
-        class="btn btn-default"
-        type="button"
-        (click)="onAddTalk()"
-        >Add Talk</button>
-        <div class="form-group"
-        *ngFor="let hobbyControl of getControls(); let i = index">
-        <input type="text" class="form-control" [formControlName]="i">
-        <!-- <label>Topic</label>  
-        <input type="text" class="form-control" [formControlName]="i"> -->
+          *ngFor="let hobbyControl of getControls(); let i = index"
+        >
+          <input type="text" class="form-control" [formControlName]="i" />
         </div>
       </div>
-
-      
-
-
-
-
 
       <div class="row">
         <div class="col-sm-12 form-group">
@@ -168,7 +131,6 @@
             id="closingHymnNumber"
             class="form-control"
             formControlName="closingHymnNumber"
-           
           />
         </div>
       </div>
@@ -181,7 +143,6 @@
             id="closingHymnName"
             class="form-control"
             formControlName="closingHymnName"
-            
           />
         </div>
       </div>
@@ -194,15 +155,18 @@
             id="benediction"
             class="form-control"
             formControlName="benediction"
-           
           />
         </div>
       </div>
 
       <div class="row">
         <div class="col-xs-12 btn-toolbar">
-          <button class="btn btn-success" type="submit">Save</button>
-          <button class="btn btn-primary" type="button" (click)="onCancel()">
+          <button class="btn btn-success save-form" type="submit">Save</button>
+          <button
+            class="btn btn-primary cancel-form"
+            type="button"
+            (click)="onCancel()"
+          >
             Cancel
           </button>
         </div>

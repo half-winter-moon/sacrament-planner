@@ -59,13 +59,15 @@ h1.heading {
   color: #000;
   /* margin-right: -70px; */
 }
-.delete-btn {
+.delete-btn,
+.cancel-form {
   background-color: #d0377e;
   border-color: #e01a76;
   color: #000;
   /* margin-left: -70px; */
 }
-.add-btn {
+.add-btn,
+.save-form {
   background-color: rgb(243, 229, 211);
   border-color: #abbbcd;
   color: #000;
@@ -84,4 +86,27 @@ h1.heading {
   margin: auto auto;
   max-width: 60%;
   margin-bottom: 60px;
+}
+
+.add-talk {
+  outline: #000 solid 1px;
+  margin: 20px;
+  margin-left: 0px;
+  background-color: #979a9c;
+  color: white;
+}
+
+.save-form,
+.cancel-form {
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.sacrament-edit {
+  margin: auto auto;
+  max-width: 60%;
+  margin-top: 60px;
+}
+.sacrament-edit.input {
+  margin-bottom: 20px;
 }
