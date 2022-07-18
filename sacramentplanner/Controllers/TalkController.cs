@@ -83,6 +83,7 @@ namespace sacramentplanner.Controllers
         [HttpPost]
         public async Task<ActionResult<Talk>> PostTalk(Talk talk)
         {
+        
           if (_context.Talks == null)
           {
               return Problem("Entity set 'SacramentPlannerContext.Talks'  is null.");

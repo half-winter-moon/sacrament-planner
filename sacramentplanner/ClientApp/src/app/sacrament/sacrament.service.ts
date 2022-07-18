@@ -96,6 +96,7 @@ export class SacramentService {
         sacrament.sacramentPlanId = responseData.sacramentPlanId;
         this.sacraments.push(sacrament);
         this.sortAndSend();
+        return responseData.sacramentPlanId;
       });
   }
 

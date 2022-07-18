@@ -13,7 +13,6 @@
             id="sacramentDate"
             class="form-control"
             formControlName="sacramentDate"
-            [(ngModel)]="sacrament.sacramentDate"
             required
           />
         </div>
@@ -27,7 +26,6 @@
             id="presiding"
             class="form-control"
             formControlName="presiding"
-            [(ngModel)]="sacrament.presiding"
           />
         </div>
       </div>
@@ -40,7 +38,7 @@
             id="conducting"
             class="form-control"
             formControlName="conducting"
-            [(ngModel)]="sacrament.conducting"
+          
           />
         </div>
       </div>
@@ -53,7 +51,7 @@
             id="openingHymnNumber"
             class="form-control"
             formControlName="openingHymnNumber"
-            [(ngModel)]="sacrament.openingHymnNumber"
+           
             required
           />
           <!-- <div class="alert alert-danger" *ngIf="!f.valid">
@@ -70,7 +68,7 @@
             id="openingHymnName"
             class="form-control"
             formControlName="openingHymnName"
-            [(ngModel)]="sacrament.openingHymnName"
+          
             required
           />
         </div>
@@ -84,7 +82,7 @@
             id="invocation"
             class="form-control"
             formControlName="invocation"
-            [(ngModel)]="sacrament.invocation"
+           
           />
         </div>
       </div>
@@ -97,7 +95,7 @@
             id="sacramentHymnNumber"
             class="form-control"
             formControlName="sacramentHymnNumber"
-            [(ngModel)]="sacrament.sacramentHymnNumber"
+          
           />
         </div>
       </div>
@@ -110,19 +108,19 @@
             id="sacramentHymnName"
             class="form-control"
             formControlName="sacramentHymnName"
-            [(ngModel)]="sacrament.sacramentHymnName"
+           
           />
         </div>
       </div>
 
-      <div formArrayName="talks">
+      <!-- <div formArrayName="talks">
         <div *ngIf="editMode">
           <div *ngFor="let talkControl of talks; let i = index">
             <input
               type="text"
               class="form-control"
               [formControlName]="i"
-              [(ngModel)]="talks[i]['speaker']"
+             
             />
           </div>
         </div>
@@ -137,7 +135,30 @@
             let i = index
           "
         ></div>
+      </div> -->
+
+
+
+      <div formArrayName="talks">
+        <h4>Talks</h4>
+        <button
+        class="btn btn-default"
+        type="button"
+        (click)="onAddTalk()"
+        >Add Talk</button>
+        <div class="form-group"
+        *ngFor="let hobbyControl of getControls(); let i = index">
+        <input type="text" class="form-control" [formControlName]="i">
+        <!-- <label>Topic</label>  
+        <input type="text" class="form-control" [formControlName]="i"> -->
+        </div>
       </div>
+
+      
+
+
+
+
 
       <div class="row">
         <div class="col-sm-12 form-group">
@@ -147,7 +168,7 @@
             id="closingHymnNumber"
             class="form-control"
             formControlName="closingHymnNumber"
-            [(ngModel)]="sacrament.closingHymnNumber"
+           
           />
         </div>
       </div>
@@ -160,7 +181,7 @@
             id="closingHymnName"
             class="form-control"
             formControlName="closingHymnName"
-            [(ngModel)]="sacrament.closingHymnName"
+            
           />
         </div>
       </div>
@@ -173,7 +194,7 @@
             id="benediction"
             class="form-control"
             formControlName="benediction"
-            [(ngModel)]="sacrament.benediction"
+           
           />
         </div>
       </div>

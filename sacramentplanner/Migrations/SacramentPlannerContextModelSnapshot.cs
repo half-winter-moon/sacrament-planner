@@ -141,6 +141,7 @@ namespace sacramentplanner.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<int?>("SacramentPlanId")
+                        .IsRequired()
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Speaker")
@@ -162,7 +163,9 @@ namespace sacramentplanner.Migrations
                 {
                     b.HasOne("sacramentplanner.Models.SacramentPlan", "SacramentPlan")
                         .WithMany("Talks")
-                        .HasForeignKey("SacramentPlanId");
+                        .HasForeignKey("SacramentPlanId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("SacramentPlan");
                 });

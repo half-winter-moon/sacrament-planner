@@ -93,10 +93,18 @@ namespace sacramentplanner.Controllers
           {
               return Problem("Entity set 'SacramentPlannerContext.SacramentPlans'  is null.");
           }
+        
+            // Console.WriteLine(sacramentFake.Talks);
+            // if(sacramentFake.Talks !=null)
+            // foreach(var i in sacramentFake.Talks)
+            // {
+            //     Console.WriteLine(i);
+            // }
             _context.SacramentPlans.Add(sacramentPlan);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetSacramentPlan", new { id = sacramentPlan.SacramentPlanId }, sacramentPlan);
+            // return Ok();
+           return CreatedAtAction("GetSacramentPlan", new { id = sacramentPlan.SacramentPlanId }, sacramentPlan);
         }
 
         // DELETE: api/Sacrament/5

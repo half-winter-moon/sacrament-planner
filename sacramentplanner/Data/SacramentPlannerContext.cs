@@ -20,7 +20,11 @@ namespace sacramentplanner.Models
             modelBuilder.Entity<Hymn>().ToTable("Hymn");
             modelBuilder.Entity<Member>().ToTable("Member");
             modelBuilder.Entity<Talk>().ToTable("Talk");
-            modelBuilder.Entity<SacramentPlan>().ToTable("SacramentPlan");            
+            modelBuilder.Entity<SacramentPlan>().ToTable("SacramentPlan");
+            modelBuilder.Entity<SacramentPlan>()
+                .HasMany(s => s.Talks)
+                .WithOne(r => r.SacramentPlan)
+                .OnDelete(DeleteBehavior.Cascade);            
         }
     }
 }

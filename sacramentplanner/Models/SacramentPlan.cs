@@ -4,7 +4,7 @@ namespace sacramentplanner.Models
     {
         public int SacramentPlanId { get; set; }
         
-        public DateTime ?SacramentDate { get; set; }
+        public DateTime SacramentDate { get; set; }
         public string Presiding { get; set; }
         public string Conducting { get; set; }
         public string OpeningHymnName { get; set; }
